@@ -10,3 +10,39 @@ BONUS 1:
 Trasformare la stringa foto in una immagine effettiva
 BONUS 2:
 Organizzare i singoli membri in card/schede */
+
+// Create an array variable to contain all team member
+const team = [
+    {
+        name: 'John',
+        role: 'CEO',
+        pic: './img/pic1.jfif'
+    },
+    {
+        name: 'Jane',
+        role: 'CMO',
+        pic: './img/pic2.jfif'
+    },
+    {
+        name: 'Joseph',
+        role: 'CFO',
+        pic: './img/pic3.jfif'
+    },
+    {
+        name: 'Jessica',
+        role: 'CSO',
+        pic: './img/pic4.jfif'
+    },
+    {
+        name: 'Philiph',
+        role: 'CTO',
+        pic: './img/pic5.jfif'
+    }
+];
+
+// Create loop to print all memebers in console
+for (let i = 0; i < team.length; i++) {
+
+    console.log(team[i]);
+
+}
