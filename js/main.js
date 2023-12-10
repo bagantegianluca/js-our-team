@@ -64,13 +64,48 @@ for (let i = 0; i < team.length; i++) {
     cardChildrenElements = `
     <img src="${member.pic}" class="card-img-top img_rounded" alt="${member.name}-pic">
     <div class="card-body p-0">
+        <hr>
         <h5 class="card-title text-center">${member.name}</h5>
         <p class="card-text">${member.name} is the <strong>${member.role}</strong> of the company</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <div class="text-center">
+        <a href="#" class="btn btn-primary">Remove</a>
+        </div>
     </div>
     `
     // Add cardChildrenElements to cardElement
     cardElement.innerHTML = cardChildrenElements;
+
+    // Add eventListener to remove whole card at button click
+    const buttonElement = cardElement.querySelector('.btn');
+
+    buttonElement.addEventListener('click', function () {
+        colElement.remove();
+    })
+
+    // Add eventListener to highlight the selected card (switch off the other one) or swicht off itself
+    cardElement.addEventListener('click', function () {
+
+        const isHighlighted = this.classList.contains('card-highlighted');
+
+        const cardsElements = document.querySelectorAll('.card');
+
+        if (isHighlighted) {
+
+            cardsElements.forEach(cardElement => {
+                // ✅ Remove class from each element
+                cardElement.classList.remove('card-highlighted');
+            });
+            this.classList.add('card-highlighted');
+        } else {
+            cardsElements.forEach(cardElement => {
+                // ✅ Remove class from each element
+                cardElement.classList.remove('card-highlighted');
+            });
+        }
+
+        cardElement.classList.toggle('card-highlighted');
+
+    })
 
     // Insert cardElement into colElement
     colElement.appendChild(cardElement);

@@ -13,3 +13,7 @@ strong {
 .img_rounded {
     border-radius: 50%;
 }
+
+.card-highlighted {
+    background: yellow;
+}
