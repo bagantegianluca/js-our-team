@@ -13,31 +13,11 @@ Organizzare i singoli membri in card/schede */
 
 // Create an objects array and set it into a variable to contain all team members
 const team = [
-    {
-        name: 'John',
-        role: 'CEO',
-        pic: './img/pic1.jfif'
-    },
-    {
-        name: 'Joseph',
-        role: 'CFO',
-        pic: './img/pic2.jfif'
-    },
-    {
-        name: 'Jane',
-        role: 'CMO',
-        pic: './img/pic3.jfif'
-    },
-    {
-        name: 'Jessica',
-        role: 'CSO',
-        pic: './img/pic4.jfif'
-    },
-    {
-        name: 'Philiph',
-        role: 'CTO',
-        pic: './img/pic5.jfif'
-    }
+    { name: 'John', role: 'CEO', pic: './img/pic1.jfif' },
+    { name: 'Joseph', role: 'CFO', pic: './img/pic2.jfif' },
+    { name: 'Jane', role: 'CMO', pic: './img/pic3.jfif' },
+    { name: 'Jessica', role: 'CSO', pic: './img/pic4.jfif' },
+    { name: 'Philiph', role: 'CTO', pic: './img/pic5.jfif' }
 ];
 
 // Select row node
@@ -83,27 +63,29 @@ for (let i = 0; i < team.length; i++) {
     })
 
     // Add eventListener to highlight the selected card (switch off the other one) or swicht off itself
-    cardElement.addEventListener('click', function () {
+    cardElement.addEventListener('click', function (e) {
 
-        const isHighlighted = this.classList.contains('card-highlighted');
+        // Check the selected element is not the remove button
+        if (e.target !== buttonElement) {
 
-        const cardsElements = document.querySelectorAll('.card');
+            const isHighlighted = this.classList.contains('card-highlighted');
 
-        if (isHighlighted) {
+            const cardsElements = document.querySelectorAll('.card');
 
+            // Remove class .card-highlighted from each card
             cardsElements.forEach(cardElement => {
                 // ✅ Remove class from each element
                 cardElement.classList.remove('card-highlighted');
             });
-            this.classList.add('card-highlighted');
-        } else {
-            cardsElements.forEach(cardElement => {
-                // ✅ Remove class from each element
-                cardElement.classList.remove('card-highlighted');
-            });
+
+            // If this card was highlighted before, readd class .card-highlighted
+            if (isHighlighted) {
+
+                this.classList.add('card-highlighted');
+            }
+
+            cardElement.classList.toggle('card-highlighted');
         }
-
-        cardElement.classList.toggle('card-highlighted');
 
     })
 
@@ -114,4 +96,3 @@ for (let i = 0; i < team.length; i++) {
     rowElement.appendChild(colElement);
 
 }
-
